@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}About{% endblock %}
+
+{% block body %}
+    <div>
+        <h2>About</h2>
+
+        <div class="jumbotron">
+            <h3>Simple Web App MVC</h3>
+
+            <p>
+                {{ about_version }}<br />
+                &copy; {{ about_copyright }}<br />
+                <a href="{{ about_url }}">{{ about_url }}</a>
+            </p>
+        </div>
+    </div>
+{% endblock %}

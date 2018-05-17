@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}{% endblock %} - Simple Web App MVC</title>
+
+        <link href="{{ asset('css/site.css') }}" rel="stylesheet" />
+        {% block stylesheets %}{% endblock %}
+    </head>
+
+    <body>
+        <div class="navbar">
+            <div class="navbar_content">
+                <ul>
+                    <li><a class="navbar_brand" href="{{ path('index') }}">Simple Web App MVC</a><li>
+                    <li><a href="{{ path('home_about') }}">About</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="body_content">
+            {% block body %}{% endblock %}
+            <hr />
+            <footer>
+                <p>&copy; 2018 - Simple Web App MVC</p>
+            </footer>
+        </div>
+
+        <script src="{{ asset('js/main.js') }}"></script>
+        {% block javascripts %}{% endblock %}
+    </body>
+</html>
