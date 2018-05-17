@@ -19,7 +19,7 @@ class HomeController extends Controller
             'home/about.html.twig',
             array(
                 'about_copyright' => '2018 Adam A. Jammary',
-                'about_url'       => 'http://www.jammary.com/',
+                'about_url'       => 'https://simple-web-app-mvc-php.azurewebsites.net/',
                 'about_version'   => 'Version 1.0.0'
             )
         );
