@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Task{% endblock %}
+
+{% block body %}
+    <div>
+        <h2>Edit Task</h2>
+        <hr />
+        
+        <div class="form">
+            {{ form_start(form) }}
+                {{ form_errors(form) }}
+
+                <div class="form_group">
+                    {{ form_label(form.title) }} {{ form_errors(form.title) }}<br />
+                    {{ form_widget(form.title) }}
+                </div>
+
+                <div class="form_group">
+                    {{ form_label(form.description) }} {{ form_errors(form.description) }}<br />
+                    {{ form_widget(form.description) }}
+                </div>
+
+                <div class="form_group">
+                    {{ form_label(form.date) }} {{ form_errors(form.date) }}<br />
+                    {{ form_widget(form.date) }}
+                </div>
+
+                <div class="form_group">
+                    {{ form_label(form.status) }} {{ form_errors(form.status) }}<br />
+                    {{ form_widget(form.status) }}
+                </div>
+
+                <div class="form_group">
+                    {{ form_widget(form.save) }}
+                </div>
+            {{ form_end(form) }}
+
+            <a href="{{ path('task') }}">Back to List</a>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Tasks{% endblock %}
+
+{% block body %}
+    <div>
+        <h2>Tasks</h2>
+
+        <div class="jumbotron">
+            <p><a href="{{ path('task_create') }}">Create New</a></p>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th><a href="{{ path('task', { 'sort': 'Title' }) }}">Title</a></th>
+                        <th><a href="{{ path('task', { 'sort': 'Description' }) }}">Description</a></th>
+                        <th><a href="{{ path('task', { 'sort': 'Date' }) }}">Date</a></th>
+                        <th><a href="{{ path('task', { 'sort': 'Status' }) }}">Status</a></th>
+                        <th></th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    {% for task in tasks %}
+                    <tr>
+                        <td>{{ task.title }}</td>
+                        <td>{{ task.description }}</td>
+                        <td>{{ task.date | date('Y-m-d') }}</td>
+                        <td>{{ task.status }}</td>
+                        <td>
+                            <a href="{{ path('task_edit',    { 'id': task.id }) }}">Edit</a> |
+                            <a href="{{ path('task_details', { 'id': task.id }) }}">Details</a> |
+                            <a href="{{ path('task_delete',  { 'id': task.id }) }}">Delete</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}

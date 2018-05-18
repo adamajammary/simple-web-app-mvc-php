@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Task Details{% endblock %}
+
+{% block body %}
+    <div>
+        <h2>Task Details</h2>
+        
+        <div class="jumbotron">
+            <dl>
+                <dt>Title</dt>
+                <dd>{{ task.title }}</dd>
+                <dt>Description</dt>
+                <dd>{{ task.description }}</dd>
+                <dt>Date</dt>
+                <dd>{{ task.date | date('Y-m-d') }}</dd>
+                <dt>Status</dt>
+                <dd>{{ task.status }}</dd>
+            </dl>
+
+            <a href="{{ path('task_edit', { 'id': task.id }) }}">Edit</a> |
+            <a href="{{ path('task') }}">Back to List</a>
+        </div>
+    </div>
+{% endblock %}
