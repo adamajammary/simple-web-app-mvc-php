@@ -101,12 +101,41 @@ class TaskController extends Controller
      */
     public function index(Request $request)
     {
-        $repository      = $this->getDoctrine()->getRepository(Task::class);
         $sort            = $request->query->get('sort');
         $sortTitle       = ($sort == 'Title'       ? 'Title_desc'       : 'Title');
         $sortDescription = ($sort == 'Description' ? 'Description_desc' : 'Description');
         $sortDate        = ($sort == 'Date'        ? 'Date_desc'        : 'Date');
         $sortStatus      = ($sort == 'Status'      ? 'Status_desc'      : 'Status');
+        $tasks           = $this->getSorted($sort);
+
+        return $this->render(
+            'task/index.html.twig',
+            array(
+                'tasks'           => $tasks,
+                'sortTitle'       => $sortTitle,
+                'sortDescription' => $sortDescription,
+                'sortDate'        => $sortDate,
+                'sortStatus'      => $sortStatus,
+                'sortJSON'        => $sort
+            )
+        );
+    }
+
+    /**
+     * @Route("/task/getJSON", name="task_getJSON")
+     */
+    public function getJSON(Request $request)
+    {
+        return $this->json($this->getSorted($request->query->get('sort')));
+    }
+
+    /**
+     * Returns a list of tasks sorted by the specified sort column and order.
+     * @param sort Sort column and order
+     */
+    private function getSorted($sort)
+    {
+        $repository = $this->getDoctrine()->getRepository(Task::class);
 
         if (!empty($sort))
         {
@@ -121,18 +150,7 @@ class TaskController extends Controller
             $sortOrder  = 'ASC';
         }
 
-        $tasks = $repository->findBy(array(), array($sortColumn => $sortOrder));
-
-        return $this->render(
-            'task/index.html.twig',
-            array(
-                'tasks'           => $tasks,
-                'sortTitle'       => $sortTitle,
-                'sortDescription' => $sortDescription,
-                'sortDate'        => $sortDate,
-                'sortStatus'      => $sortStatus
-            )
-        );
+        return $repository->findBy(array(), array($sortColumn => $sortOrder));
     }
 
     /**

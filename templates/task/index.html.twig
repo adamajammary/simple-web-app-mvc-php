@@ -36,6 +36,8 @@
                     {% endfor %}
                 </tbody>
             </table>
+
+            <p><a href="{{ path('task_getJSON', { 'sort': sortJSON }) }}">Download JSON</a></p>
         </div>
     </div>
 {% endblock %}
