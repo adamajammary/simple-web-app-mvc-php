@@ -99,12 +99,39 @@ class TaskController extends Controller
     /**
      * @Route("/task", name="task")
      */
-    public function index()
+    public function index(Request $request)
     {
-        $repository = $this->getDoctrine()->getRepository(Task::class);
+        $repository      = $this->getDoctrine()->getRepository(Task::class);
+        $sort            = $request->query->get('sort');
+        $sortTitle       = ($sort == 'Title'       ? 'Title_desc'       : 'Title');
+        $sortDescription = ($sort == 'Description' ? 'Description_desc' : 'Description');
+        $sortDate        = ($sort == 'Date'        ? 'Date_desc'        : 'Date');
+        $sortStatus      = ($sort == 'Status'      ? 'Status_desc'      : 'Status');
+
+        if (!empty($sort))
+        {
+            $sort       = strtolower($sort);
+            $sortOrder  = substr($sort, -5);
+            $sortColumn = ($sortOrder == '_desc' ? substr($sort, 0, strpos($sort, '_desc')) : $sort);
+            $sortOrder  = ($sortOrder == '_desc' ? 'DESC' : 'ASC');
+        }
+        else
+        {
+            $sortColumn = 'title';
+            $sortOrder  = 'ASC';
+        }
+
+        $tasks = $repository->findBy(array(), array($sortColumn => $sortOrder));
 
         return $this->render(
-            'task/index.html.twig', array('tasks' => $repository->findAll())
+            'task/index.html.twig',
+            array(
+                'tasks'           => $tasks,
+                'sortTitle'       => $sortTitle,
+                'sortDescription' => $sortDescription,
+                'sortDate'        => $sortDate,
+                'sortStatus'      => $sortStatus
+            )
         );
     }
 
