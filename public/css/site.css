@@ -23,15 +23,20 @@ button {
     border-radius: 5px;
 }
 
-dd {
-    margin-left: 170px;
-}
-
 dt {
     float:       left;
     font-weight: bold;
     text-align:  right;
     width:       150px;
+}
+
+dd {
+    margin-left: 170px;
+}
+
+dd:after {
+    content:     ' ';
+    white-space: pre;
 }
 
 h1, h2, h3, h4, h5, h6 {
