@@ -43,10 +43,6 @@ class Task
      */
     private $status;
 
-    public $statusCodes = array(
-        'N/A', 'Not Started', 'Started', 'In Progress', 'Almost Done', 'Completed'
-    );
-
     public function getId()
     {
         return $this->id;
