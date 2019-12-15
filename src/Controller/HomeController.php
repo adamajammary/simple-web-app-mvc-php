@@ -3,12 +3,12 @@
 namespace App\Controller;
 
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 /**
  * Home Controller
  */
-class HomeController extends Controller
+class HomeController extends AbstractController
 {
     /**
      * @Route("/home/about", name="home_about")
@@ -19,14 +19,14 @@ class HomeController extends Controller
             'home/about.html.twig',
             array(
                 'about_copyright' => '2018 Adam A. Jammary',
-                'about_url'       => 'https://simple-web-app-mvc-php.azurewebsites.net/',
+                'about_url'       => 'https://github.com/adamajammary/simple-web-app-mvc-php',
                 'about_version'   => 'Version 1.0.0'
             )
         );
     }
 
     /**
-     * @Route("/home", name="home_index")
+     * @Route("/", name="index")
      */
     public function index()
     {
@@ -34,7 +34,7 @@ class HomeController extends Controller
             'home/index.html.twig',
             array(
                 'message_short' => 'Welcome to my simple web app',
-                'message_long'  => 'This simple web app is made using PHP7, Symfony 4, Twig 2, Doctrine ORM, and is hosted on Azure Cloud Services.'
+                'message_long'  => 'This simple web app is made using PHP7, Symfony 4, Twig 2 and Doctrine ORM.'
             )
         );
     }
