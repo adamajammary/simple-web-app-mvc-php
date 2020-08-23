@@ -1,0 +1,16 @@
+runtime: php
+env: flex
+manual_scaling:
+  instances: 1
+resources:
+  cpu: 1
+  memory_gb: 0.5
+  disk_size_gb: 10
+runtime_config:
+  document_root: public
+beta_settings:
+  cloud_sql_instances: simple-web-app-mvc-php:europe-west1:simple-web-app-mvc-php-mysql=tcp:3306
+env_variables:
+  APP_ENV: "prod"
+  APP_SECRET: "b56ac487d79a66b7b7f88a52c5de92bb"
+  DATABASE_URL: "mysql://db_user:db_password@172.17.0.1:3306/db_name"

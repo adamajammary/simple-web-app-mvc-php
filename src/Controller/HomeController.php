@@ -19,8 +19,8 @@ class HomeController extends AbstractController
             'home/about.html.twig',
             array(
                 'about_copyright' => '2018 Adam A. Jammary',
-                'about_url'       => 'https://github.com/adamajammary/simple-web-app-mvc-php',
-                'about_version'   => 'Version 1.0.0'
+                'about_url'       => 'https://www.jammary.com/',
+                'about_version'   => 'Version 1.0.1'
             )
         );
     }
