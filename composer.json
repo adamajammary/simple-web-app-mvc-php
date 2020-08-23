@@ -63,7 +63,7 @@
             "security-checker security:check": "script"
         },
         "post-install-cmd": [
-            "@auto-scripts"
+            "chmod -R ug+w $APP_DIR/var"
         ],
         "post-update-cmd": [
             "@auto-scripts"
