@@ -34,7 +34,7 @@ class HomeController extends AbstractController
             'home/index.html.twig',
             array(
                 'message_short' => 'Welcome to my simple web app',
-                'message_long'  => 'This simple web app is made using PHP7, Symfony 4, Twig 2 and Doctrine ORM.'
+                'message_long'  => 'This simple web app is made using PHP 7, Symfony 4, Twig 2 and Doctrine ORM.'
             )
         );
     }
