@@ -64,6 +64,11 @@ h6 {
     font-size: 80%;
 }
 
+hr {
+    border: none;
+    border-top: 1px solid #EEE;
+}
+
 input, select {
     color:      black;
     margin-top: 5px;

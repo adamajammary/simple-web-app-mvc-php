@@ -10,7 +10,7 @@
             <dl>
                 <dt>Title</dt><dd>{{ task.title }}</dd>
                 <dt>Description</dt><dd>{{ task.description }}</dd>
-                <dt>Date</dt><dd>{{ task.date | date('Y-m-d') }}</dd>
+                <dt>Date</dt><dd>{{ task.date ? task.date | date('Y-m-d') : '' }}</dd>
                 <dt>Status</dt><dd>{{ task.status }}</dd>
             </dl>
 
