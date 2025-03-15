@@ -20,7 +20,7 @@ class HomeController extends AbstractController
             array(
                 'about_copyright' => '2018 Adam A. Jammary',
                 'about_url'       => 'https://www.jammary.com/',
-                'about_version'   => 'Version 1.0.2'
+                'about_version'   => 'Version 1.0.3'
             )
         );
     }

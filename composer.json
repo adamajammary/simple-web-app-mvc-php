@@ -4,7 +4,7 @@
     "require": {
         "php": "7.4.*",
         "ext-iconv": "*",
-        "composer/package-versions-deprecated": "1.11.99.4",
+        "composer/package-versions-deprecated": "^1.11.99",
         "doctrine/annotations": "^1.0",
         "doctrine/common": "^2",
         "doctrine/doctrine-bundle": "^2",
@@ -47,7 +47,10 @@
         "preferred-install": {
             "*": "dist"
         },
-        "sort-packages": true
+        "sort-packages": true,
+        "allow-plugins": {
+            "symfony/flex": true
+        }
     },
     "autoload": {
         "psr-4": {
