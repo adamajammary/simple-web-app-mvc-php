@@ -252,13 +252,14 @@
         "version": "v4.0.9"
     },
     "symfony/phpunit-bridge": {
-        "version": "3.3",
+        "version": "7.4",
         "recipe": {
             "repo": "github.com/symfony/recipes",
-            "branch": "master",
-            "version": "3.3",
-            "ref": "179470cb6492db92dffee208cfdb436f175c93b4"
-        }
+            "branch": "main",
+            "version": "7.3",
+            "ref": "56f87409c45ff6654b0bf07c5cc359aebf6016ab"
+        },
+        "files": []
     },
     "symfony/polyfill-ctype": {
         "version": "v1.13.1"
