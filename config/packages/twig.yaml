@@ -1,4 +1,6 @@
 twig:
-    paths: ['%kernel.project_dir%/templates']
-    debug: '%kernel.debug%'
-    strict_variables: '%kernel.debug%'
+    file_name_pattern: '*.twig'
+
+when@test:
+    twig:
+        strict_variables: true
