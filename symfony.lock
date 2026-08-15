@@ -123,13 +123,16 @@
         "version": "v4.0.9"
     },
     "symfony/console": {
-        "version": "3.3",
+        "version": "7.4",
         "recipe": {
             "repo": "github.com/symfony/recipes",
-            "branch": "master",
-            "version": "3.3",
-            "ref": "e3868d2f4a5104f19f844fe551099a00c6562527"
-        }
+            "branch": "main",
+            "version": "5.3",
+            "ref": "1781ff40d8a17d87cf53f8d4cf0c8346ed2bb461"
+        },
+        "files": [
+            "bin/console"
+        ]
     },
     "symfony/css-selector": {
         "version": "v4.0.9"
