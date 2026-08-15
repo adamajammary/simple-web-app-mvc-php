@@ -4,17 +4,16 @@ namespace App\Controller;
 
 use App\Entity\Task;
 use App\Form\TaskType;
+
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Routing\Attribute\Route;
 
 class TaskController extends AbstractController
 {
-    /**
-     * @Route("/task/create", name="task_create")
-     */
+    #[Route("/task/create", name: "task_create")]
     public function create(Request $request)
     {
         $task = new Task();
@@ -32,12 +31,10 @@ class TaskController extends AbstractController
 
         return $this->render(
             'task/create.html.twig', array('form' => $form->createView())
-        );        
+        );
     }
 
-    /**
-     * @Route("/task/delete/{id}", name="task_delete")
-     */
+    #[Route("/task/delete/{id}", name: "task_delete")]
     public function delete($id, Request $request)
     {
         $repository = $this->getDoctrine()->getRepository(Task::class);
@@ -57,12 +54,10 @@ class TaskController extends AbstractController
         return $this->render(
             'task/delete.html.twig',
             array('form' => $form->createView(), 'task' => $task)
-        );        
+        );
     }
 
-    /**
-     * @Route("/task/details/{id}", name="task_details")
-     */
+    #[Route("/task/details/{id}", name: "task_details")]
     public function details($id)
     {
         $repository = $this->getDoctrine()->getRepository(Task::class);
@@ -72,9 +67,7 @@ class TaskController extends AbstractController
         );
     }
 
-    /**
-     * @Route("/task/edit/{id}", name="task_edit")
-     */
+    #[Route("/task/edit/{id}", name: "task_edit")]
     public function edit($id, Request $request)
     {
         $repository = $this->getDoctrine()->getRepository(Task::class);
@@ -93,12 +86,10 @@ class TaskController extends AbstractController
 
         return $this->render(
             'task/edit.html.twig', array('form' => $form->createView())
-        );        
+        );
     }
 
-    /**
-     * @Route("/task", name="task")
-     */
+    #[Route("/task", name: "task")]
     public function index(Request $request)
     {
         $sort            = $request->query->get('sort');
@@ -121,9 +112,7 @@ class TaskController extends AbstractController
         );
     }
 
-    /**
-     * @Route("/task/getJSON", name="task_getJSON")
-     */
+    #[Route("/task/getJSON", name: "task_getJSON")]
     public function getJSON(Request $request)
     {
         return $this->json($this->getSorted($request->query->get('sort')));

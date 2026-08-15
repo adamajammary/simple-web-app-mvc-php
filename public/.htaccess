@@ -1,3 +1,30 @@
+Options -Indexes
+
+<IfModule mod_headers.c>
+    Header set Content-Security-Policy "default-src https:"
+    Header set Permissions-Policy "camera=(), geolocation=(), microphone=()"
+    Header set Referrer-Policy "strict-origin-when-cross-origin"
+    Header set Strict-Transport-Security "max-age=63072000; includeSubDomains; preload"
+    Header set X-Content-Type-Options "nosniff"
+    Header set X-Frame-Options "DENY"
+
+    <FilesMatch "\\.(gif|ico|jpe?g|png)$">
+        Header set Cache-Control "max-age=29030400, public"
+    </FilesMatch>
+    <FilesMatch "\\.(css|js)$">
+        Header set Cache-Control "max-age=2592000, public"
+    </FilesMatch>
+    <FilesMatch "\\.(x?html?|php|xml)$">
+        Header set Cache-Control "max-age=600, private, must-revalidate"
+    </FilesMatch>
+</IfModule>
+
+<IfModule mod_deflate.c>
+    <filesMatch "\.(js|css|html|php)$">
+        SetOutputFilter DEFLATE
+    </filesMatch>
+</IfModule>
+
 # Use the front controller as index file. It serves as a fallback solution when
 # every other rewrite/redirect fails (e.g. in an aliased environment without
 # mod_rewrite). Additionally, this reduces the matching process for the
