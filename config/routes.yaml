@@ -1,3 +1,2 @@
 controllers:
-  resource: routing.controllers
-  type: attribute
+    resource: routing.controllers
