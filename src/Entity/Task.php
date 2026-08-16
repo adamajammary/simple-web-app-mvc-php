@@ -3,11 +3,8 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Validator\Constraints as Assert;
 
-/**
- * @ORM\Entity
- */
+#[ORM\Entity]
 class Task
 {
     function __construct()
@@ -15,32 +12,22 @@ class Task
         $this->setDate(new \DateTime());
     }
 
-    /**
-     * @ORM\Id()
-     * @ORM\GeneratedValue()
-     * @ORM\Column(type="integer")
-     */
+    #[ORM\Id]
+    #[ORM\GeneratedValue]
+    #[ORM\Column(type: 'integer')]
     private $id;
 
-    /**
-     * @Assert\Length(min=3, max=50)
-     * @ORM\Column(type="string", length=50)
-     */
+    #[Assert\Length(min: 3, max: 50)]
+    #[ORM\Column(type: 'string', length: 50)]
     private $title;
 
-    /**
-     * @ORM\Column(type="string", length=250, nullable=true)
-     */
+    #[ORM\Column(type: 'string', length: 250, nullable: true)]
     private $description;
 
-    /**
-     * @ORM\Column(type="date")
-     */
+    #[ORM\Column(type: 'date')]
     private $date;
 
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
+    #[ORM\Column(type: 'string', length: 255)]
     private $status;
 
     public function getId()

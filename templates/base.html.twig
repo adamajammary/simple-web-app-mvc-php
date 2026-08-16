@@ -1,34 +1,45 @@
 <!DOCTYPE html>
 
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}{% endblock %} - Simple Web App MVC</title>
+  <head>
+    <meta charset="UTF-8">
 
-        <link href="{{ asset('css/site.css') }}" rel="stylesheet" />
-        {% block stylesheets %}{% endblock %}
-    </head>
+    <title>{% block title %}{% endblock %} - Simple Web App MVC</title>
 
-    <body>
-        <div class="navbar">
-            <div class="navbar_content">
-                <ul>
-                    <li><a class="navbar_brand" href="{{ path('index') }}">Simple Web App MVC</a></li>
-                    <li><a href="{{ path('task') }}">Tasks</a></li>
-                    <li><a href="{{ path('home_about') }}">About</a></li>
-                </ul>
-            </div>
-        </div>
+    {% block stylesheets %}{% endblock %}
+    {% block javascripts %}{% endblock %}
 
-        <div class="body_content">
-            {% block body %}{% endblock %}
-            <hr />
-            <footer>
-                <p>&copy; 2018 - Adam A. Jammary - Simple Web App MVC</p>
-            </footer>
-        </div>
+    <link href="{{ asset('css/site.css') }}" rel="stylesheet" />
 
-        <script src="{{ asset('js/site.js') }}"></script>
-        {% block javascripts %}{% endblock %}
-    </body>
+    <script src="{{ asset('js/site.js') }}"></script>
+
+    {% set frankenphp_hot_reload = app.request.server.get('FRANKENPHP_HOT_RELOAD') %}
+    {% if frankenphp_hot_reload %}
+      <meta name="frankenphp-hot-reload:url" content="{{ frankenphp_hot_reload }}">
+      <script src="https://cdn.jsdelivr.net/npm/idiomorph"></script>
+      <script src="https://cdn.jsdelivr.net/npm/frankenphp-hot-reload/+esm" type="module"></script>
+    {% endif %}
+  </head>
+
+  <body>
+    <div class="navbar">
+      <div class="navbar_content">
+        <ul>
+          <li><a class="navbar_brand" href="{{ path('index') }}">Simple Web App MVC</a></li>
+          <li><a href="{{ path('task') }}">Tasks</a></li>
+          <li><a href="{{ path('about') }}">About</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="body_content">
+      {% block body %}{% endblock %}
+
+      <hr />
+
+      <footer>
+        <p>&copy; 2018 - Adam A. Jammary - Simple Web App MVC</p>
+      </footer>
+    </div>
+  </body>
 </html>
